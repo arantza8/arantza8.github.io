@@ -14,29 +14,33 @@
  crossorigin=""></script>
 
 <!-- he descargado el archivo .css y he indicado la ruta relativa. He abierto el link de la presentacion y he guardado la pagina en la carpeta que tengo como directorio  -->
-<link rel="stylesheet" href="./leaflet.css"
+<link rel="stylesheet" href="css/leaflet.css"
  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
  crossorigin=""/>
 <!-- he descargado el archivo .js y he indicado la ruta relativa -->
-<script src="./leaflet.js"
+<script src="js/leaflet.js"
  integrity="sha512-3Wcxp7F9bV2pl+MBgrL6Pz7AJASLpemmQPIiPA0lDs3ImF0z4JuuMIBPeirLbgIuhfH2gJyGWZjvm6M+Zr7L6Q=="
  crossorigin=""></script>
 
  <!-- cargar javascript (objeto GeoJSON transformado) -->
- <script src="./provincias.js"></script>
+ <script src="js/provincias.js"></script>
 
- <style type="text/css" title="estilos personales">
-body {background-color: mediumaquamarine; margin-left: 600px}
+ <style type="text/css" title="estilos personales"> /* defino un estilo egeneral para el cuerpo, dos estilos para los encabezados de orden 1 y 3 y una subclase para el mapa*/
+body {background-color: honeydew;} /* establezco un color de fondo */
+h1 {background-color: MEDIUMSEAGREEN; color: black; padding: 20px; font-family: sans-serif; text-align: center;} /* indico el formato de los encabezados: color de fondo, de letra, alineación...*/
+h3 {color: black; font-family: sans-serif; text-align: center;}
+.mapa {margin: auto;} /* creao una subclase para aplicar sobre el mapa y que aparezca centrado*/
 </style>
+</head>
 
 <body>
-  <h1>Las provincias de Aragón</h1>
-  Localización de las provincias aragonesas dentro del Estado Español
+  <h1>Las provincias de Aragón</h1> <!--titulo con el estilo de h1-->
+  <h3> Localización de las provincias aragonesas dentro del Estado Español </h3> <!--subtitulo con el estilo de h3-->
 
- <!-- bloque dónde aparecerá el mapa -->
-<div id="bloque_mapa" style="width: 600px; height: 600px;"></div>
+ <!-- bloque dónde aparecerá el mapa, así como el estilo del mapa -->
+<div class=mapa id="bloque_mapa" style="width: 600px; height: 600px;"></div>
 
-<script>
+<script> // a partir de ahora se emplea lenguaje de Javascript
 // defino el mapa como una varianble y ajusto dónde quiero que aparezca
     var mi_mapa = L.map('bloque_mapa').setView([42.81, -1.64], 5); // L.map es la función que permite crear y manipular el mapa. Set view: coordenadas de mi mapa y nivel de zoom.
 
@@ -50,7 +54,7 @@ maxZoom: 20  // zoom máximo
 });
 stamen_tms.addTo(mi_mapa);
 
-  // Cambiamos mapa base. Añadir TM de OpenStreetMap render Mapnik
+  // Añado otro mapa base. Añado TM de OpenStreetMap render Mapnik
 var OSM_mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -102,7 +106,9 @@ var PNOA = L.tileLayer.wms('http://www.idee.es/wms/PNOA/PNOA?', {  //URL WMS
     araprov.addTo(mi_mapa)   //
 
 
-</script>
+</script> <!-- cierro el script -->
 
 
-</body>
+</body> <!-- cierro el cuerpo -->
+
+</html> <!-- finalmente cierro el contenido html -->
